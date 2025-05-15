@@ -3,7 +3,10 @@ using ChatWebApplication.Models;
 using ChatWebApplication.SemanticKernel;
 using ChatWebApplication.Services;
 using ChatWebApplication.Services.Interfaces;
+using ChatWebApplication.Services.Telemetry;
 using ChatWebApplication.SignalRHub;
+using Microsoft.ApplicationInsights.DependencyCollector;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.SemanticKernel;
 
 namespace ChatWebApplication
@@ -14,6 +17,22 @@ namespace ChatWebApplication
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            // Add Application Insights telemetry
+            builder.Services.AddApplicationInsightsTelemetry(options =>
+            {
+                // You can customize options here if needed
+            });
+
+            // Configure Application Insights for advanced tracking options
+            builder.Services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) =>
+            {
+                // Track dependencies for Azure services
+                module.EnableW3CHeadersInjection = true;
+            });
+
+            // Register telemetry services
+            builder.Services.AddSingleton<ITelemetryService, ApplicationInsightsTelemetryService>();
 
             builder.Services.AddRazorPages();
 
