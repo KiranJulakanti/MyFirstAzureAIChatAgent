@@ -1,0 +1,111 @@
+{
+  "accountId": "{{accountId}}",
+  "name": "{{customerName}}",
+  "taxId": "{{taxId}}",
+  "legalAccountId": "9-XWKT34Z2I",
+  "affilation": "Business Government",
+  "authorizedBuyerFirstName": "Sap fname",
+  "authorizedBuyerLastName": "Sap lname",
+  "authorizedBuyerTitle": "Sap job title",
+  "authorizedBuyerPhone": "2349801324",
+  "authorizedEmailId": "sapmap@gmail.com",
+  "paymentTerms": "N060",
+  "country": "Singapore",
+  "customerRegion": "APAC",
+  "addresses": [
+    {
+      "addressId": "91f0bc01-2f35-47fb-a337-9b34df123bcc",
+      "affilation": "Registered Address",
+      "name": "",
+      "street": "12632 NE 24ST",
+      "postalCode": "98007",
+      "city": "Singa",
+      "province": "",
+      "country": "Singapore",
+      "registeredtaxId": "{{taxId}}",
+      "customerCertifiedEmail": "",
+      "customerConsigneeCode": "",
+      "purchasingCompanyTaxId": "",
+      "shipmentCompanyTaxId": "",
+      "sapAccountId": "",
+      "contacts": {
+        "contactId": "",
+        "contactFirstName": "",
+        "contactLastName": "",
+        "contactPhone": "",
+        "contactEmail": "",
+        "isContactPrimary": "No"
+      },
+      "state": "Ang Mo Kio",
+      "isAddressPrimary": ""
+    },
+    {
+      "addressId": "52286be9-3112-4fad-94ed-eec46862acbe",
+      "affilation": "Billing",
+      "name": "{{customerName}}",
+      "street": "12632 NE 24ST",
+      "postalCode": "98007",
+      "city": "Singa",
+      "province": "",
+      "country": "Singapore",
+      "registeredtaxId": "",
+      "customerCertifiedEmail": "",
+      "customerConsigneeCode": "",
+      "purchasingCompanyTaxId": "{{taxId}}",
+      "shipmentCompanyTaxId": "",
+      "sapAccountId": "",
+      "contacts": {
+        "contactId": "",
+        "contactFirstName": "Sap fname",
+        "contactLastName": "Sap lname",
+        "contactPhone": "2349801324",
+        "contactEmail": "sapmap@gmail.com",
+        "isContactPrimary": "Yes"
+      },
+      "state": "Ang Mo Kio",
+      "isAddressPrimary": "Yes"
+    },
+    {
+      "addressId": "d0526bf2-ae44-4516-a719-ef842391d462",
+      "affilation": "Shipping",
+      "name": "{{customerName}}",
+      "street": "12632 NE 24ST",
+      "postalCode": "98007",
+      "city": "Singa",
+      "province": "",
+      "country": "Singapore",
+      "registeredtaxId": "",
+      "customerCertifiedEmail": "",
+      "customerConsigneeCode": "",
+      "purchasingCompanyTaxId": "",
+      "shipmentCompanyTaxId": "{{taxId}}",
+      "sapAccountId": "",
+      "contacts": {
+        "contactId": "",
+        "contactFirstName": "Sap fname",
+        "contactLastName": "Sap lname",
+        "contactPhone": "2349801324",
+        "contactEmail": "sapmap@gmail.com",
+        "isContactPrimary": "Yes"
+      },
+      "state": "Ang Mo Kio",
+      "isAddressPrimary": "Yes"
+    }
+  ],
+  "discount": {
+    "afilliationSelected": "Business Government",
+    "contract": [],
+    "taxExempt": {
+      "isTaxExemptChecked": false,
+      "expirationDate": "",
+      "taxExemptReason": ""
+    },
+    "customerGroup": {
+      "closedAudience": false,
+      "governmentDiscountSelected": false,
+      "employeePricingSelected": false,
+      "couponCode": []
+    },
+    "restrictedSkus": ""
+  }
+}

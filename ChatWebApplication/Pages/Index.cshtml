@@ -1,0 +1,94 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@* <div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div> *@
+<div class="container">
+    @* <div class="row mb-3">
+        <div class="col">
+            <h1 class="display-4 text-center">Azure OpenAI Chat</h1>
+        </div>
+    </div> *@
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <span>Chat Session</span>
+                    <button id="btnClearChat" class="btn btn-sm btn-light">Clear Chat</button>
+                </div>
+              @*   <div class="card-body">
+                    <div id="chatMessages" class="chat-messages mb-3">
+                        <p>Welcome to Purchase Experiences! Type a message below to start your conversation.</p>
+                        <div class="system-message">
+                            <div class="row p-1" id="userInputDiv">
+                                <div class="col-6">
+                                    <ul id="userInputList"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="system-message">
+                            <div class="row p-1" id="systemOutputDiv">
+                                <div class="col-6">
+                                    <ul id="systemOutputList"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> *@
+
+                <div class="card-body" style="height: 700px; overflow-y:auto">
+                    <div id="chatMessages" class="chat-messages mb-3">
+                        <p>Welcome to Purchase Experiences! How can I help assist you today?</p>
+                        <div id="containerDiv">
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="input-group">
+                        <input type="text" id="userInput" class="form-control" placeholder="Type your message..." />
+                        @* <input type="text" id="messageInput" class="form-control" placeholder="Type..." /> *@
+                        <div class="input-group-append">
+                            <button id="sendButton" class="btn btn-primary">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* <div class="container">
+    <div class="row p-1">
+        <div class="col-1">User</div>
+        <div class="col-5"><input type="text" id="userInput" /></div>
+    </div>
+    <div class="row p-1">
+        <div class="col-1">Message</div>
+        <div class="col-5"><input type="text" class="w-100" id="messageInput" /></div>
+    </div>
+    <div class="row p-1">
+        <div class="col-6 text-end">
+            <input type="button" id="sendButton" value="Send Message" />
+        </div>
+    </div>
+    <div class="row p-1">
+        <div class="col-6">
+            <hr />
+        </div>
+    </div>
+    <div class="row p-1">
+        <div class="col-6">
+            <ul id="messagesList"></ul>
+        </div>
+    </div>
+</div> *@
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
