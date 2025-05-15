@@ -7,5 +7,14 @@
         public string ClientId { get; set; } = "d8783682-48bf-4390-9da7-6268388b2448";
         public string TenantId { get; set; } = "72f988bf-86f1-41af-91ab-2d7cd011db47";
         public bool UseCertificateToken { get; set; } = true;
+
+        // currently returning hardcoded token that is generated from running the PPE case portal in browser through networking in Devtools
+        public static string CaseServiceAuthToken
+        {
+            get
+            {
+                return "<auth token goes here>";
+            }
+        }
     }
 }

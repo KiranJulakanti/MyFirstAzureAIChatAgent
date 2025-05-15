@@ -23,7 +23,7 @@ namespace ChatWebApplication.Services
                 var apiUri = new Uri(customerAccountLink);
 
                 // got this from running PPE case portal in browser through networking in Devtools  
-                var authToken = AuthTokenProvider.CaseServiceAuthToken;
+                var authToken = CaseServiceSettings.CaseServiceAuthToken;
 
                 HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, apiUri);
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
