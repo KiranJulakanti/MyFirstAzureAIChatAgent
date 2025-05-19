@@ -52,6 +52,32 @@ public string SayHello(
 }
 ```
 
+#### Snippet Management Tools
+
+The project includes two tools for snippet management:
+- `save_snippet`: Saves a code snippet into your snippet collection
+- `get_snippets`: Gets code snippets from your snippet collection
+
+#### Telemetry Tools
+
+The project includes tools for retrieving telemetry information from Application Insights:
+
+- `get_app_errors`: Gets error logs from Application Insights
+  - Parameters:
+    - `hours`: Number of hours to look back (default: 24)
+    - `limit`: Maximum number of records to return (default: 20)
+
+- `get_app_traces`: Gets trace logs from Application Insights
+  - Parameters:
+    - `severityLevel`: Filter by severity level (Verbose, Information, Warning, Error, Critical)
+    - `hours`: Number of hours to look back (default: 24)
+    - `limit`: Maximum number of records to return (default: 20)
+
+- `get_app_performance`: Gets performance metrics from Application Insights
+  - Parameters:
+    - `hours`: Number of hours to look back (default: 24)
+    - `limit`: Maximum number of records to return (default: 20)
+
 ## Deployment
 
 ### Adding MCP server to local VS Code
