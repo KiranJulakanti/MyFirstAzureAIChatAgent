@@ -117,7 +117,7 @@ namespace ChatWebApplication.Services
             {
                 _telemetryService?.TrackTrace("Generating customer account request content", SeverityLevel.Information);
                 
-                string filePath = "C:\\jkiran\\AzureAISkillFest\\AzureAIChatAgent\\ChatWebApplication\\CreateCustomerAccountRequest.json";
+                string filePath = "C:\\jkiran\\code\\Learning\\AzureAISkillFest\\AzureAIChatAgent\\ChatWebApplication\\CreateCustomerAccountRequest.json";
 
                 if (!File.Exists(filePath))
                 {

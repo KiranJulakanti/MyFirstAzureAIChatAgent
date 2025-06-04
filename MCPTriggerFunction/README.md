@@ -166,3 +166,24 @@ public class WeatherTool(ILogger<WeatherTool> logger)
     }
 }
 ```
+
+
+### Telemetry MCP Tool testing
+Once the tool is started, run the following questions/prompts in the Agent mode,
+
+- get the error logs from Application Insights for last 24 hours
+- get 5 most commonly occurred errors along with number of times occurred and recommend a fix.
+- get me the list of events which threw errors in last 24 hours with occurrence count
+- what is the performance of this application?
+- can you provide any best practices to improve the performance of this application based on the error logs?
+- can you give me trace logs for this connectionid <>
+- Available Trace Log Entries for a given timeframe of an exception.
+
+Flow:
+give me latest 5 errors
+can you give me all the events associated with this error message?, see if you can give traces arround that timeframe of that error.
+can you share more details about CaseService.GetRequestContent and root cause of that exception with a recommendation to fix?
+
+
+
+

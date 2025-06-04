@@ -25,14 +25,11 @@ namespace MCPTriggerFunction
             
         // Telemetry tool definitions
         public const string GetErrorsToolName = "get_app_errors";
-        public const string GetErrorsToolDescription =
-            "Gets error logs from Application Insights for the application.";
-        public const string GetTracesToolName = "get_app_traces";
-        public const string GetTracesToolDescription =
-            "Gets trace logs from Application Insights for the application.";
+        public const string GetErrorsToolDescription = "Gets error logs from Application Insights for the application.";
+        public const string GetTracesToolName = "get_app_traces"; 
+        public const string GetTracesToolDescription = "Gets trace logs from Application Insights for the application.";
         public const string GetPerformanceToolName = "get_app_performance";
-        public const string GetPerformanceToolDescription =
-            "Gets performance metrics from Application Insights for the application.";
+        public const string GetPerformanceToolDescription = "Gets performance metrics from Application Insights for the application.";
             
         // Telemetry tool parameter definitions
         public const string HoursPropertyName = "hours";

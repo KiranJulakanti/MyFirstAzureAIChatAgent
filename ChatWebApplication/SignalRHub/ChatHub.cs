@@ -88,7 +88,7 @@ namespace ChatWebApplication.SignalRHub
 
             try
             {
-                _telemetryService.TrackEvent("UserMessageReceived", new Dictionary<string, string> {
+                _telemetryService.TrackEvent($"UserMessageReceived: {Context.ConnectionId}", new Dictionary<string, string> {
                     { "MessagePreview", userInput.Length > 20 ? userInput.Substring(0, 20) + "..." : userInput }
                 });
                 
@@ -96,7 +96,7 @@ namespace ChatWebApplication.SignalRHub
                 var predictedIntent = await _chatKernel.GetUserIntent(userInput);
                 stopwatch.Stop();
                 
-                _telemetryService.TrackEvent("IntentClassified", new Dictionary<string, string> {
+                _telemetryService.TrackEvent($"IntentClassified: {Context.ConnectionId}", new Dictionary<string, string> {
                     { "Intent", predictedIntent },
                     { "ProcessingTimeMs", stopwatch.ElapsedMilliseconds.ToString() }
                 });
@@ -106,7 +106,7 @@ namespace ChatWebApplication.SignalRHub
             catch (Exception ex)
             {
                 _telemetryService.TrackException(ex);
-                await SendSystemMessage($"Exception occurred: {ex.Message}, Stack trace: {ex.StackTrace}");
+                await SendSystemMessage($"Exception occurred, connection Id {Context.ConnectionId} : {ex.Message}, Stack trace: {ex.StackTrace}");
             }
         }
 
@@ -133,7 +133,7 @@ namespace ChatWebApplication.SignalRHub
                     {
                         try
                         {
-                            _telemetryService.TrackTrace("Handling RecommendedProducts intent", SeverityLevel.Information);
+                            _telemetryService.TrackTrace($"Handling RecommendedProducts intent for connection id: {Context.ConnectionId}", SeverityLevel.Information);
                             var startTime = DateTimeOffset.UtcNow;
                             var stopwatch = Stopwatch.StartNew();
                             
@@ -165,24 +165,26 @@ namespace ChatWebApplication.SignalRHub
 
                     ["WantToPurchase"] = async (userInput) =>
                     {
-                        _telemetryService.TrackEvent("PurchaseIntentDetected");
+                        _telemetryService.TrackEvent($"PurchaseIntentDetected: {Context.ConnectionId}");
                         await SendSystemMessage($"Thank you for showing your interest.<br/>Before proceeding, wanted to know if you are a new customer to Microsoft?.");
                     },
 
                     ["NewCustomer"] = async (userInput) =>
                     {
-                        _telemetryService.TrackEvent("NewCustomerIdentified");
+                        _telemetryService.TrackEvent($"NewCustomerIdentified: {Context.ConnectionId}");
                         await SendSystemMessage($"Great, in that case I would require your personal details to create an account with us.<br/>Are you interested to proceed? ");
                     },
 
                     ["ProvideDetails"] = async (userInput) =>
                     {
-                        _telemetryService.TrackEvent("CustomerRequestedToProvideDetails");
+                        _telemetryService.TrackEvent($"CustomerRequestedToProvideDetails for connection id: {Context.ConnectionId}");
                         await SendSystemMessage($"Please <a href='#' id='ProvideDetails' onclick='ProvideDetails()'>click here</a> to provide your details.");
                     },
 
                     ["DetailsReceived"] = async (userInput) =>
                     {
+                        _telemetryService.TrackEvent($"DetailsReceived for connection id: {Context.ConnectionId}");
+
                         await SendSystemMessage($"Ok, I received your details, I am in the process of creating your account with us, <br/> please hang on a few mins while we setup your account.");
 
                         try
@@ -201,9 +203,9 @@ namespace ChatWebApplication.SignalRHub
                             stopwatch.Stop();
                             _telemetryService.TrackDependency("CaseService", "CreateCustomerAccount", "Account Creation API Call", startTime, stopwatch.Elapsed, !string.IsNullOrEmpty(apiResponse));
                             
-                            await SendSystemMessage($"Great news! Your account has been successfully set up. Please save this CustomerAccountId: {apiResponse} for future reference in our communications.");
+                            await SendSystemMessage($"Great news! Your account has been successfully set up. Please save this CustomerAccountId: {apiResponse} for future reference in our communications. Your connection id is: {Context.ConnectionId}");
                             
-                            _telemetryService.TrackEvent("CustomerAccountCreated", new Dictionary<string, string> {
+                            _telemetryService.TrackEvent($"CustomerAccountCreated; for connection id: {Context.ConnectionId}", new Dictionary<string, string> {
                                 { "AccountId", apiResponse }
                             });
                         }
